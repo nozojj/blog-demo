@@ -19,7 +19,7 @@ export default function Setting({ session }: { session: Session }) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="font-medium">
-          {session.user.name}
+          {session.user?.name}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
