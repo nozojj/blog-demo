@@ -6,7 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import DeletePostDialog from "./DeletePostDialog";
+import DeletePostDialog from "@/components/post/DeletePostDialog";
 import { useState } from "react";
 
 export default function PostDropdownMenu({ postId }: { postId: string }) {
@@ -14,11 +14,11 @@ export default function PostDropdownMenu({ postId }: { postId: string }) {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const handleDeleteDialogChange = (open: boolean) => {
-    setShowDeleteDialog(open)
-    if(!open){
-      setIsDropdownOpen(false)
+    setShowDeleteDialog(open);
+    if (!open) {
+      setIsDropdownOpen(false);
     }
-  }
+  };
 
   return (
     <>
@@ -40,21 +40,22 @@ export default function PostDropdownMenu({ postId }: { postId: string }) {
               編集
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem className="text-red-600 cursor-pointer"
-          onSelect={() => {
-            setIsDropdownOpen(false)
-            setShowDeleteDialog(true)
-          }}
+          <DropdownMenuItem
+            className="text-red-600 cursor-pointer"
+            onSelect={() => {
+              setIsDropdownOpen(false);
+              setShowDeleteDialog(true);
+            }}
           >
             削除
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      { showDeleteDialog && (
-        <DeletePostDialog 
-        postId={postId}
-        isOpen={showDeleteDialog}
-        onOpenChange={handleDeleteDialogChange}
+      {showDeleteDialog && (
+        <DeletePostDialog
+          postId={postId}
+          isOpen={showDeleteDialog}
+          onOpenChange={handleDeleteDialogChange}
         />
       )}
     </>
